@@ -20,10 +20,12 @@ License: \tab GPL (>=2) \cr
 
 }
 \author{
-person("Manuel","Reif", role="aut", email="Manuel.Reif@statistik.gv.at"),
-person("Jakob","Peterbauer", role="aut", email="Jakob.Peterbauer@statistik.gv.at") 
+Manuel Reif <Manuel.Reif@statistik.gv.at>
 
-Maintainer: person("Manuel","Reif", role="aut", email="Manuel.Reif@statistik.gv.at")
+Jakob Peterbauer <Jakob.Peterbauer@statistik.gv.at>
+
+
+Maintainer: Manuel Reif <Manuel.Reif@statistik.gv.at>
 
 }
 \references{
@@ -33,7 +35,7 @@ Saerndal, C.-E. & Swensson, B. & Wretman, J. (1992). \emph{Model Assisted Survey
 
 See also:
 
-OECD (2013). \emph{Technical Report of the Survey of Adult Skills (PIAAC)}. Retrieved from: http://www.oecd.org/site/piaac/All%20PIACC%20Technical%20Report%20final.pdf
+OECD (2013). \emph{Technical Report of the Survey of Adult Skills (PIAAC)}. Retrieved from: http://www.oecd.org/site/piaac/All\%20PIACC\%20Technical\%20Report\%20final.pdf
 
 }
 
