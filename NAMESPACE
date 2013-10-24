@@ -1,0 +1,14 @@
+import(survey)
+
+export(svyPVpm)
+export(svyPVbenchmark)
+export(svyPVglm)
+export(svyPVcor)
+export(svyPVlevel)
+export(svyPVprob)
+export(svyPVquantile)
+export(svyPVttest)
+export(svyPVeta)
+
+S3method(summary, svyPVglm)
+

@@ -1,0 +1,11 @@
+Package: svyPVpack
+Type: Package
+Title: Package for complex surveys including plausible values
+Version: 0.1
+Date: 2013-04-03
+Author: person("Manuel","Reif", role="aut", email="Manuel.Reif@statistik.gv.at"), person("Jakob","Peterbauer", role="aut", email="Jakob.Peterbauer@statistik.gv.at")
+Maintainer: Manuel Reif <Manuel.Reif@statistik.gv.at>
+Description: This package deals with data which stem from survey designs including plausible values. This package has been created to handle data from Large Scale Assessments like PISA, PIAAC etc. which use  complex survey designs to draw the sample and plausible values to report person related estimates. Various functions/statistics (mean, quantile, GLM etc.) are provided to handle this kind of data.
+License: GPL (>= 2)
+Depends: survey
+Suggests: testthat
