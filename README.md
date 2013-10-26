@@ -13,4 +13,4 @@ install_github("svyPVpack", "manuelreif")
 
 
 
-[### More information and tutorials](https://github.com/manuelreif/svyPVpack/wiki)
+[More information and tutorials](https://github.com/manuelreif/svyPVpack/wiki)
