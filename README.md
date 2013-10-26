@@ -10,3 +10,7 @@ To install this package, install devtools first.
 library(devtools)
 install_github("svyPVpack", "manuelreif")
 ```
+
+
+
+[### More information and tutorials](https://github.com/manuelreif/svyPVpack/wiki)
