@@ -1,7 +1,7 @@
 svyPVpack
 =========
 
-This package deals with data from survey designs including plausible values.
+This package deals with data from survey designs including plausible values and is developed by Jakob Peterbauer and Manuel Reif.
 
 
 To install this package, install devtools first.
