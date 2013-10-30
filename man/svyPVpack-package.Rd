@@ -20,14 +20,11 @@ License: \tab GPL (>=2) \cr
 
 }
 \author{
-Manuel Reif <Manuel.Reif@statistik.gv.at>
-
-Jakob Peterbauer <Jakob.Peterbauer@statistik.gv.at>
-
+Manuel Reif <Manuel.Reif@statistik.gv.at>, Jakob Peterbauer <Jakob.Peterbauer@statistik.gv.at>
 
 Maintainer: Manuel Reif <Manuel.Reif@statistik.gv.at>
-
 }
+
 \references{
 
 Saerndal, C.-E. & Swensson, B. & Wretman, J. (1992). \emph{Model Assisted Survey Sampling}. New York: Springer.
@@ -49,7 +46,8 @@ OECD (2013). \emph{Technical Report of the Survey of Adult Skills (PIAAC)}. Retr
 
 data(svy_example1)
 
-erg_ben <- svyPVbenchmark(by = ~ sex, svydat=svy.exrep, pvs=c("plaus1","plaus2","plaus3"), BENCH=320)
+erg_ben <- svyPVbenchmark(by = ~ sex, svydat=svy.exrep,
+pvs=c("plaus1","plaus2","plaus3"), BENCH=320)
 
 erg_ben
 

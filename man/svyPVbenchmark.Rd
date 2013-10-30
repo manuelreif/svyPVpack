@@ -63,7 +63,8 @@ Manuel Reif
 
 data(svy_example1)
 
-erg_ben <- svyPVbenchmark(by = ~ sex, svydat=svy.exrep, pvs=c("plaus1","plaus2","plaus3"), BENCH=320)
+erg_ben <- svyPVbenchmark(by = ~ sex, svydat=svy.exrep, 
+pvs=c("plaus1","plaus2","plaus3"), BENCH=320)
 
 erg_ben
 
