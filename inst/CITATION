@@ -1,0 +1,16 @@
+citHeader("To cite the 'svyPVpack' package in publications use:")
+
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl = TRUE)
+vers <- paste("R package version", meta$Version)
+
+citEntry(entry="Manual",
+         title = "svyPVpack: Package for complex surveys including plausible values",
+         author =  c(person("Manuel", "Reif"), person("Jakob", "Peterbauer")),
+         year = year,
+         note = vers,
+	 url  = "https://github.com/manuelreif/svyPVpack",		 	
+         textVersion =
+         paste0("Reif, M. & Peterbauer, J. (",
+               year,"). svyPVpack: Package for complex surveys including plausible values. ",
+               vers, "."," https://github.com/manuelreif/svyPVpack"))
+
