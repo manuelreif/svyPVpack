@@ -8,7 +8,7 @@ To install the brandnew version from github, install devtools first.
 
 ```R
 library(devtools)
-install_github("svyPVpack", "manuelreif")
+install_github("manuelreif/svyPVpack")
 ```
 
 Installing the package from cran is straightforward.
