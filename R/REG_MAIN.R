@@ -1,6 +1,3 @@
-########################################################################
-# REG MAIN FUNCTIONS
-########################################################################
 
 
 #' Survey-weighted generalised linear models with uasge of palusible values.
@@ -54,6 +51,7 @@
 #'
 #'
 #' @export svyPVglm
+#'
 svyPVglm <- function(formula,
                      design,
                      placeholder = 1:10,
@@ -65,7 +63,7 @@ svyPVglm <- function(formula,
     char.calls <-  lapply(as.char.forms,
                           function(x)(paste(x[2],x[1], x[3])))
     formulas <- lapply(char.calls, as.formula)
-      mods <- lapply(lapply(formulas,as.formula),
+      mods <- lapply(formulas,
                      glm.dummy.no.std,
                      design, family)
       COEF.TAB <- lapply(mods, function(x)(x$coef))
