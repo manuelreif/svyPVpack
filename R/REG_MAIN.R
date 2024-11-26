@@ -4,16 +4,16 @@
 
 
 #' Survey-weighted generalised linear models with uasge of palusible values.
-#' 
+#'
 #' Fit a generalised linear model to data from a complex survey design with
 #' usage of plausible values.
-#' 
+#'
 #' All variables mentioned in the formula object must be part of the survey
 #' design object.  Instead of the symbols, which were used for numbering the
 #' plausible values use '..' as notation (e.g. placeholder = 1:5 and PVLIT..
 #' stands for PVLIT1, PVLIT2, PVLIT3, PVLIT4, PVLIT5). Missing values are
 #' deleted listwise.
-#' 
+#'
 #' @aliases svyPVglm summary.svyPVglm
 #' @param formula a model formula (all variables have to be part of a survey
 #' design objecct created by the survey package). For a notation description
@@ -27,10 +27,9 @@
 #' family function, a family function or the result of a call to a family
 #' function.
 #' @param object A object of class svyPVglm.
-#' @param \dots
 #' @return The function returns a list, which includes the following
 #' dataframes.
-#' 
+#'
 #' \item{coef}{Shows the regression coefficients and test statistics.}
 #' \item{mod.fit}{Shows the model test statistic. For more details see
 #' \link{svyglm}.}
@@ -38,46 +37,46 @@
 #' @seealso \code{\link{svyglm}}, \code{\link{svyPVcor}},
 #' \code{\link{svyPVeta}}
 #' @references Lumley, T. (2010). \emph{Complex Surveys}. Hoboken, NJ: Wiley.
-#' 
+#'
 #' Saerndal, C.-E. & Swensson, B. & Wretman, J. (1992). \emph{Model Assisted
 #' Survey Sampling}. New York: Springer.
-#' 
+#'
 #' Chaudhuri, A. & Stenger, H. (2005). \emph{Survey Sampling. Theory and
 #' Methods}. Boka Raton, FL: Chapman & Hall/CRC.
 #' @keywords glm
 #' @examples
-#' 
+#'
 #' data(svy_example1)
-#' 
+#'
 #' res_glm <- svyPVglm(plaus.. ~ otherPlaus.. + age, svy.exrep, placeholder = 1:3)
-#' 
+#'
 #' res_glm
-#' 
-#' 
+#'
+#'
 #' @export svyPVglm
-svyPVglm <- function(formula, 
-                     design, 
-                     placeholder = 1:10, 
+svyPVglm <- function(formula,
+                     design,
+                     placeholder = 1:10,
                      family = gaussian()){
   if(length(grep("\\.\\.",formula)) == 0){stop("NO PVS")}
   else{
     as.char.forms <- lapply(placeholder,
                             function(x) gsub("\\.\\.", x, formula))
-    char.calls <-  lapply(as.char.forms, 
+    char.calls <-  lapply(as.char.forms,
                           function(x)(paste(x[2],x[1], x[3])))
     formulas <- lapply(char.calls, as.formula)
-      mods <- lapply(lapply(formulas,as.formula), 
-                     glm.dummy.no.std, 
+      mods <- lapply(lapply(formulas,as.formula),
+                     glm.dummy.no.std,
                      design, family)
       COEF.TAB <- lapply(mods, function(x)(x$coef))
-      C.est <- do.call(rbind, 
-                       lapply(COEF.TAB, 
+      C.est <- do.call(rbind,
+                       lapply(COEF.TAB,
                               function(x)
                                 (t(as.data.frame(x)[1]))
                        )
       )
-      C.sd <- do.call(rbind, 
-                      lapply(COEF.TAB, 
+      C.sd <- do.call(rbind,
+                      lapply(COEF.TAB,
                              function(x)
                                (t(as.data.frame(x)[2]))
                       )
@@ -85,19 +84,19 @@ svyPVglm <- function(formula,
       C.var <- C.sd^2
       Means <- apply(C.est, 2, mean)
       sampling.v <- apply(C.var, 2, mean)
-      imputation.v <- apply(C.est,2, var) 
+      imputation.v <- apply(C.est,2, var)
       tot.se <- sqrt(sampling.v + (1.1 * imputation.v))
       t.value <- Means/tot.se
       t.value.4.test <- abs(t.value)
       Pr.t <- pt(t.value.4.test , design$degf, lower.tail = FALSE)*2
-      
-      COEF.wo.Pr.t <- round(rbind(Means, tot.se, t.value), 
+
+      COEF.wo.Pr.t <- round(rbind(Means, tot.se, t.value),
                             digits = getOption("digits"))
       COEF <- rbind(COEF.wo.Pr.t, Pr.t)
-      rownames(COEF) <- c("mean", "se", "t.value", "Pr.t") 
+      rownames(COEF) <- c("mean", "se", "t.value", "Pr.t")
       FIT.TAB <- lapply(mods, function(x)(x$mod.fit))
-      FIT.est <- t(do.call(cbind, 
-                           lapply(FIT.TAB, 
+      FIT.est <- t(do.call(cbind,
+                           lapply(FIT.TAB,
                                   function(x)
                                     (t(as.data.frame(x)))
                            )
@@ -111,7 +110,7 @@ svyPVglm <- function(formula,
                        lower.tail=FALSE)
       p <- format.pval(p.dummy)
       FIT.return <- data.frame(Working.2.logLR, p)
-      rownames(FIT.return) <- ""    
+      rownames(FIT.return) <- ""
       t.COEF <- as.data.frame(t(COEF))
       t.COEF$Pr.t <- format.pval(t.COEF$Pr.t)
       FINAL.RES <- list(coef=t.COEF, mod.fit=FIT.return)
